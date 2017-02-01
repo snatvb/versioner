@@ -1,0 +1,43 @@
+{
+	"name": "@snatvb/versioner",
+	"version": "0.1.8",
+	"description": "Auto versions controll tool",
+	"main": "index.js",
+	"bin": {
+		"versioner": "index.js"
+	},
+	"scripts": {
+		"test": "yarn test",
+		"start": "tsc index.ts -w",
+		"dev": "node-dev ./dev/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/snatvb/versioner.git"
+	},
+	"keywords": [
+		"version",
+		"versions",
+		"snatvb",
+		"git",
+		"controll",
+		"auto"
+	],
+	"author": "snatvb",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/snatvb/versioner/issues"
+	},
+	"homepage": "https://github.com/snatvb/versions#readme",
+	"dependencies": {
+		"chalk": "^1.1.3",
+		"commander": "^2.9.0",
+		"prompt": "^1.0.0",
+		"readline-sync": "^1.4.5",
+		"shelljs": "^0.7.6"
+	},
+	"devDependencies": {
+		"@types/node": "^7.0.4",
+		"typescript": "^2.1.5"
+	}
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "noImplicitAny": false,
+    "sourceMap": false,
+    "types": [
+      // add node as an option
+      "node"
+    ]
+    // typeroots option has been previously configured
+//    "typeroots": [
+//      // add path to @types
+//      "../node_modules/@types"
+//    ]
+  }
+}
