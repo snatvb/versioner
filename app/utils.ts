@@ -26,11 +26,11 @@ export function sameVersion(version: string, version2: Version) : boolean {
 }
 
 export function generateStringVersion(version: Version) : string {
-    return `${version.platform} ${version.major}.${version.core}.${version.minor}-${version.build}`.trim();
+    return `${version.platform}${version.major}.${version.core}.${version.minor}-${version.build}`.trim();
 }
 export function generateStringVersionClear(version: Version) : string {
     return `${version.major}.${version.core}.${version.minor}`.trim();
 }
 export function generateStringVersionRC(version: Version) : string {
-    return `${version.platform} ${version.major}.${version.core}.${version.minor}-rc${version.build}`.trim();
+    return `${version.platform}${version.major}.${version.core}.${version.minor}-rc${version.build}`.trim();
 }
