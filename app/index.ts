@@ -6,7 +6,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as rl from 'readline-sync';
 import * as chalk from 'chalk';
-// import * as prompt from 'prompt';
 import {error} from "./logger";
 import {
     getCommand, Command, sameVersion, generateStringVersion, generateStringVersionRC,
@@ -125,13 +124,14 @@ export default class App {
     private git () {
         const git: Command = getCommand('git');
         const rc: Command = getCommand('--rc');
+        const release: Command = getCommand('-r');
         const push: Command = getCommand('--push');
         if (git === null) {
             return;
         }
         this.versionUpgrade();
 
-        this.gitExec(git, rc !== null, push !== null);
+        this.gitExec(git, rc !== null, push !== null, release !== null);
     }
 
 
@@ -150,12 +150,16 @@ export default class App {
         fs.writeFileSync(path.join(this.basedir, this.PACKAGE_FILE), JSON.stringify(this.packageJson, null, "\t"));
     }
 
-    private gitExec (git: Command, rc: boolean, push: boolean): void {
+    private gitExec (git: Command, rc: boolean, push: boolean, release: boolean): void {
         if (typeof git.value !== "string") {
             return error(`Git command don't have commit: ${this.appName} git "COMMIT_COMMENT"`);
         }
-        const strVersion = rc ?
-            generateStringVersionRC(this.version) : generateStringVersion(this.version);
+        let strVersion: string = generateStringVersion(this.version);
+        if (release) {
+            strVersion = `v${generateStringVersionClear(this.version)}-release(${this.version.build})`;
+        } else if (rc) {
+            strVersion = generateStringVersionRC(this.version);
+        }
         shell.exec('git add --all');
         shell.exec(`git commit -m "${git.value}"`);
         shell.exec(`git tag -a "${strVersion}" -m "${git.value}"`);
@@ -196,6 +200,8 @@ export default class App {
         console.log("Welcome to the", chalk.magenta(this.appNameTitle));
         console.log("Commands:");
         console.log(aboutCmd(this.appNameTitle, 'git', '[COMMENT]', 'Use this command where you will be pushing'));
+        console.log(aboutCmd(this.appNameTitle, '--rc', null, 'Release candidate'));
+        console.log(aboutCmd(this.appNameTitle, '-r', null, 'Release version'));
         console.log(aboutCmd(this.appNameTitle, '--major', null, 'Upgrade major version'));
         console.log(aboutCmd(this.appNameTitle, '--core', null, 'Upgrade core version'));
         console.log(aboutCmd(this.appNameTitle, '--minor', null, 'Upgrade minor version'));

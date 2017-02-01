@@ -1,6 +1,6 @@
 {
 	"name": "versioner-snatvb",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Auto versions controll tool",
 	"main": "index.js",
 	"bin": {
@@ -31,8 +31,6 @@
 	"homepage": "https://github.com/snatvb/versions#readme",
 	"dependencies": {
 		"chalk": "^1.1.3",
-		"commander": "^2.9.0",
-		"prompt": "^1.0.0",
 		"readline-sync": "^1.4.5",
 		"shelljs": "^0.7.6"
 	},

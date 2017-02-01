@@ -37,6 +37,10 @@ If you want right away push your commit, use "**--push**"
 
 `verioner --rc --push git "My first commit rc version with tag"`
 
+Do you want release? Use "**-r**"
+
+`verioner -r --push git "My first commit release version with tag"`
+
 Do you want upgrade version? Yes? Okay.
 Write to console as following 
 `verioner --minor`
