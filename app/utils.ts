@@ -14,7 +14,7 @@ export function getCommand (command: string): Command {
         return null;
     }
     const cmd = process.argv[indexCmd];
-    console.log(cmd);
+    console.log(indexCmd);
     return {
         name: cmd,
         value: process.argv[indexCmd + 1]
