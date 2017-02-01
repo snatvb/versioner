@@ -10,9 +10,8 @@ import * as chalk from 'chalk';
 import {error} from "./logger";
 import {
     getCommand, Command, sameVersion, generateStringVersion, generateStringVersionRC,
-    generateStringVersionClear
+    generateStringVersionClear, aboutCmd
 } from "./utils";
-import {version} from "punycode";
 
 export interface Version {
     major: number,
@@ -30,8 +29,14 @@ export default class App {
     public basedir: string;
     private version: Version;
     private appName: string = "versioner";
+    private appNameTitle: string = "Versioner";
+    private dirname: string;
 
-    constructor () {
+    constructor (dirname : string) {
+        this.dirname = dirname;
+        if (this.about()) {
+            return;
+        }
         this.basedir = shell.pwd().stdout;
         this.packageJson = this.loadJson(this.PACKAGE_FILE);
         if (this.packageJson === null) {
@@ -174,5 +179,48 @@ export default class App {
         console.log('Your version: ' + chalk.green(generateStringVersion(this.version)));
 
         this.saveVersion(this.version);
+    }
+
+    private help (): boolean {
+        const cmd = getCommand('--help');
+        if (cmd === null) {
+            return false;
+        }
+        console.log("Welcome to the", chalk.magenta(this.appNameTitle));
+        console.log("Commands:");
+        console.log(aboutCmd(this.appNameTitle, 'git', '[COMMENT]', 'Use this command where you will be pushing'));
+        console.log(aboutCmd(this.appNameTitle, '--major', null, 'Upgrade major version'));
+        console.log(aboutCmd(this.appNameTitle, '--core', null, 'Upgrade core version'));
+        console.log(aboutCmd(this.appNameTitle, '--minor', null, 'Upgrade minor version'));
+        return true;
+    }
+
+    private about (): boolean {
+        let result = false;
+        if (this.help()) {
+            result = true;
+        }
+        if (this.v()) {
+            result = true;
+        }
+
+        return result;
+    }
+
+    private v (): boolean {
+        const cmd = getCommand('-v');
+        const cmdAlias = getCommand('--version');
+        if (cmd === null && cmdAlias === null) {
+            return false;
+        }
+        let json;
+        try {
+            json = fs.readFileSync(path.join(this.dirname, this.PACKAGE_FILE)).toString();
+            json = JSON.parse(json);
+        } catch (err) {
+            error(`Sorry, I can't found my version file :(`);
+        }
+        console.log(chalk.green(`My version is:`), json.version);
+        return true;
     }
 }

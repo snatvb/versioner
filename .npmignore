@@ -1,0 +1,7 @@
+
+.*ts
+
+.idea/
+node_modules/
+
+tsconfig.json

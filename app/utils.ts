@@ -1,7 +1,5 @@
 import {Version} from "./index";
-/**
- * Created by snatvb on 01.02.17.
- */
+import * as chalk from 'chalk';
 
 export interface Command {
     name: string,
@@ -20,17 +18,22 @@ export function getCommand (command: string): Command {
     };
 }
 
-export function sameVersion(version: string, version2: Version) : boolean {
+export function sameVersion (version: string, version2: Version): boolean {
     const vers = `${version2.major}.${version2.core}.${version2.minor}`;
     return vers === version;
 }
 
-export function generateStringVersion(version: Version) : string {
+export function generateStringVersion (version: Version): string {
     return `${version.platform}${version.major}.${version.core}.${version.minor}-${version.build}`.trim();
 }
-export function generateStringVersionClear(version: Version) : string {
+export function generateStringVersionClear (version: Version): string {
     return `${version.major}.${version.core}.${version.minor}`.trim();
 }
-export function generateStringVersionRC(version: Version) : string {
+export function generateStringVersionRC (version: Version): string {
     return `${version.platform}${version.major}.${version.core}.${version.minor}-rc${version.build}`.trim();
+}
+
+export function aboutCmd (appName: string, cmd: string, params: string, desc: string) {
+    return typeof params === "string" ? `   ${appName} ${chalk.magenta(cmd)} ${chalk.yellow(params)}: ${desc}` :
+        `   ${appName} ${chalk.magenta(cmd)}: ${desc}`
 }
