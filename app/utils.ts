@@ -10,6 +10,7 @@ export interface Command {
 
 export function getCommand (command: string): Command {
     const indexCmd = argv.indexOf(command);
+    console.log(indexCmd);
     if (indexCmd === -1) {
         return null;
     }
