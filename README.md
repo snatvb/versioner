@@ -3,7 +3,9 @@
 
 I want show you, how I can update versions, it's so simple!
 You must install me, write to console 
-`npm i -g versioner-snatvb`.
+
+`npm i -g versioner-snatvb`
+
 If you got error, use sudo with npm.
 
 So, now you must just move to your project in terminal, where you keep own project.
@@ -21,11 +23,14 @@ It's simple, so?
 
 Go next, I think you know how to use **git**.
 Just write to console: 
+
 `versioner git "My first commit with tag"`
+
 Everything! All ready!
 You create commit with tag your version
 
 If you want add "**rc**" to tag, just write 
+
 `verioner --rc git "My first commit tc version with tag"`
 
 Do you want upgrade version? Yes? Okay.

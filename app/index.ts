@@ -167,12 +167,15 @@ export default class App {
 
         if (major !== null) {
             this.version.major++;
+            this.version.build = 0;
         }
         if (core !== null) {
             this.version.core++;
+            this.version.build = 0;
         }
         if (minor !== null) {
             this.version.minor++;
+            this.version.build = 0;
         }
 
         this.packageJson.version = generateStringVersionClear(this.version);
