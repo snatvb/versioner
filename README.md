@@ -2,7 +2,7 @@
 ## Welcome to auto versions your projects!
 
 I want show you, how I can update versions, it's so simple!
-You must install me, write to console `npm i -g @snatvb/versioner`.
+You must install me, write to console `npm i -g versioner-snatvb`.
 If you got error, use sudo with npm.
 
 So, now you must just move to your project in terminal, where you keep own project.

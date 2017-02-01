@@ -1,5 +1,5 @@
 {
-	"name": "@snatvb/versioner",
+	"name": "versioner-snatvb",
 	"version": "0.0.1",
 	"description": "Auto versions controll tool",
 	"main": "index.js",
