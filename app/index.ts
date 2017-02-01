@@ -156,7 +156,7 @@ export default class App {
         }
         let strVersion: string = generateStringVersion(this.version);
         if (release) {
-            strVersion = `v${generateStringVersionClear(this.version)}-release(${this.version.build})`;
+            strVersion = `v${generateStringVersionClear(this.version)}-release_${this.version.build}`;
         } else if (rc) {
             strVersion = generateStringVersionRC(this.version);
         }
