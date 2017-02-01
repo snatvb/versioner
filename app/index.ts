@@ -158,10 +158,10 @@ export default class App {
             generateStringVersionRC(this.version) : generateStringVersion(this.version);
         shell.exec('git add --all');
         shell.exec(`git commit -m "${git.value}"`);
-        // shell.exec(`git tag -a "${strVersion}" -m ${git.value}`);
-        // console.log(`git push origin ${strVersion} -m ${git.value}`);
+        shell.exec(`git tag -a "${strVersion}" -m "${git.value}"`);
+        console.log(`git push origin ${strVersion}`);
         if (push) {
-            // shell.exec(`git push origin ${strVersion}`);
+            shell.exec(`git push origin ${strVersion}`);
         }
     }
 
