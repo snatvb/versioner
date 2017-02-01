@@ -4,7 +4,7 @@
 	"description": "Auto versions controll tool",
 	"main": "index.js",
 	"bin": {
-		"versioner": "index.js"
+		"versioner": "./index.js"
 	},
 	"scripts": {
 		"test": "yarn test",
