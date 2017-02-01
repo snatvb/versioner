@@ -29,9 +29,13 @@ Just write to console:
 Everything! All ready!
 You create commit with tag your version
 
-If you want add "**rc**" to tag, just write 
+If you want add "**--rc**" to tag, just write 
 
-`verioner --rc git "My first commit tc version with tag"`
+`verioner --rc git "My first commit rc version with tag"`
+
+If you want right away push your commit, use "**--push**"
+
+`verioner --rc --push git "My first commit rc version with tag"`
 
 Do you want upgrade version? Yes? Okay.
 Write to console as following 

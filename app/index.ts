@@ -32,7 +32,7 @@ export default class App {
     private appNameTitle: string = "Versioner";
     private dirname: string;
 
-    constructor (dirname : string) {
+    constructor (dirname: string) {
         this.dirname = dirname;
         if (this.about()) {
             return;
@@ -125,12 +125,13 @@ export default class App {
     private git () {
         const git: Command = getCommand('git');
         const rc: Command = getCommand('--rc');
+        const push: Command = getCommand('--push');
         if (git === null) {
             return;
         }
         this.versionUpgrade();
 
-        this.gitExec(git, rc !== null);
+        this.gitExec(git, rc !== null, push !== null);
     }
 
 
@@ -149,7 +150,7 @@ export default class App {
         fs.writeFileSync(path.join(this.basedir, this.PACKAGE_FILE), JSON.stringify(this.packageJson, null, "\t"));
     }
 
-    private gitExec (git: Command, rc: boolean): void {
+    private gitExec (git: Command, rc: boolean, push: boolean): void {
         if (typeof git.value !== "string") {
             return error(`Git command don't have commit: ${this.appName} git "COMMIT_COMMENT"`);
         }
@@ -158,6 +159,9 @@ export default class App {
         shell.exec('git add --all');
         shell.exec(`git commit -m "${git.value}"`);
         shell.exec(`git tag -a "${strVersion}" -m ${git.value}`);
+        if (push) {
+            shell.exec(`git push origin ${git.value}`);
+        }
     }
 
     private upgrade () {
