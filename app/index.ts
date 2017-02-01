@@ -159,7 +159,6 @@ export default class App {
         shell.exec('git add --all');
         shell.exec(`git commit -m "${git.value}"`);
         shell.exec(`git tag -a "${strVersion}" -m "${git.value}"`);
-        console.log(`git push origin ${strVersion}`);
         if (push) {
             shell.exec(`git push origin ${strVersion}`);
         }
