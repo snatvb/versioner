@@ -1,13 +1,15 @@
 import {Version} from "./index";
 import * as chalk from 'chalk';
 
+const argv = process.argv.slice(2);
+
 export interface Command {
     name: string,
     value: string
 }
 
 export function getCommand (command: string): Command {
-    const indexCmd = process.argv.indexOf(command);
+    const indexCmd = argv.indexOf(command);
     if (indexCmd === -1) {
         return null;
     }
