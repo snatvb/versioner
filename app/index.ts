@@ -33,6 +33,7 @@ export default class App {
     private dirname: string;
 
     constructor (dirname: string) {
+        return console.log('aaaa');
         this.dirname = dirname;
         if (this.about()) {
             return;
