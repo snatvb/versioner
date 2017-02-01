@@ -1,7 +1,10 @@
 
-.*ts
+*.ts
 
 .idea/
 node_modules/
+
+*.log.*
+*.log
 
 tsconfig.json
