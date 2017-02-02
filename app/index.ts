@@ -199,12 +199,12 @@ export default class App {
         }
         console.log("Welcome to the", chalk.magenta(this.appNameTitle));
         console.log("Commands:");
-        console.log(aboutCmd(this.appNameTitle, 'git', '[COMMENT]', 'Use this command where you will be pushing'));
-        console.log(aboutCmd(this.appNameTitle, '--rc', null, 'Release candidate'));
-        console.log(aboutCmd(this.appNameTitle, '-r', null, 'Release version'));
-        console.log(aboutCmd(this.appNameTitle, '--major', null, 'Upgrade major version'));
-        console.log(aboutCmd(this.appNameTitle, '--core', null, 'Upgrade core version'));
-        console.log(aboutCmd(this.appNameTitle, '--minor', null, 'Upgrade minor version'));
+        console.log(aboutCmd(this.appName, 'git', '[COMMENT]', 'Use this command where you will be pushing'));
+        console.log(aboutCmd(this.appName, '--rc', null, 'Release candidate'));
+        console.log(aboutCmd(this.appName, '-r', null, 'Release version'));
+        console.log(aboutCmd(this.appName, '--major', null, 'Upgrade major version'));
+        console.log(aboutCmd(this.appName, '--core', null, 'Upgrade core version'));
+        console.log(aboutCmd(this.appName, '--minor', null, 'Upgrade minor version'));
         return true;
     }
 
