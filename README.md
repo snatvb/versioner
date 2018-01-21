@@ -31,15 +31,15 @@ You create commit with tag your version
 
 If you want add "**--rc**" to tag, just write 
 
-`verioner --rc git "My first commit rc version with tag"`
+`versioner --rc git "My first commit rc version with tag"`
 
 If you want right away push your commit, use "**--push**"
 
-`verioner --rc --push git "My first commit rc version with tag"`
+`versioner --rc --push git "My first commit rc version with tag"`
 
 Do you want release? Use "**-r**"
 
-`verioner -r --push git "My first commit release version with tag"`
+`versioner -r --push git "My first commit release version with tag"`
 
 Do you want upgrade version? Yes? Okay.
 Write to console as following 
@@ -49,4 +49,4 @@ Exist *--minor*, *--core* and *--major* upgrade.
 They have format: "MAJOR.CORE.MINOR"
 You can use it.
 
-Tanks!
+Thanks!
